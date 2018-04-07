@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ItemLista } from './shopping-list/item-lista';
 
@@ -6,7 +8,7 @@ export class ShoppingListService {
 
   public listItems: Array<ItemLista>;
   
-  constructor() { 
+  constructor(private httpClient: HttpClient) { 
     this.listItems = [
       {name: 'Bread', disabled: false},
       {name: 'Coffe', disabled: false},
@@ -27,7 +29,12 @@ export class ShoppingListService {
   }
 
   public addItem(item: ItemLista): void {
-    if (this.existItem(item.name).length === 0) this.listItems.unshift(item);
+    if (this.existItem(item.name).length === 0) 
+      this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item)
+        .subscribe(
+          response => console.log(`It's worked!`),
+          error => console.log(error)
+        );
     else alert('Item já existe');
   }
 
