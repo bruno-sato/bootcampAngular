@@ -23,8 +23,14 @@ export class ShoppingListItemComponent implements OnInit {
         this.deleted = true;
       });
   }
-  checkItem(item: ItemLista) :void {
-    this.shoppingListService.cross(item);
+  checkItem() :void {
+    let editedItem: Object = {
+      name: this.listItem.name,
+      disabled: !this.listItem.disabled
+    }
+    this.shoppingListService.edit(this.listItem.id, editedItem).subscribe(res => {
+      this.listItem.disabled = !this.listItem.disabled;
+    });
   }
  
 }

@@ -23,8 +23,7 @@ export class ShoppingListService {
   public removeItem(item: ItemLista): Observable<Object> {
     return this.httpClient.delete(`${environment.firebase.databaseURL}/items/${item.id}.json`);
   }
-  public cross(item: ItemLista): void {
-    let index = this.listItems.indexOf(item);
-    this.listItems[index].disabled = !this.listItems[index].disabled;
+  public edit(id: string, item: Object): Observable<Object> {
+    return this.httpClient.patch(`${environment.firebase.databaseURL}/items/${id}.json`, item);
   }
  }
