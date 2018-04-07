@@ -21,21 +21,14 @@ export class ShoppingListService {
   }
 
   public existItem(item: string): Array<ItemLista> {
-    let existItem = this.listItems.filter(el => {
-      if (el.name.toUpperCase() === item.toUpperCase()) return true;
-      else return false;
+    return this.listItems.filter(el => {
+      return el.name.toUpperCase() === item.toUpperCase();
     });
-    console.log(existItem);
-    
-    return existItem;
   }
 
   public addItem(item: ItemLista): void {
-    if (this.existItem(item.name).length === 0) {
-      this.listItems.unshift(item);
-    } else {
-      alert('Item já existe');
-    }
+    if (this.existItem(item.name).length === 0) this.listItems.unshift(item);
+    else alert('Item já existe');
   }
 
   public removeItem(item: ItemLista): void {
