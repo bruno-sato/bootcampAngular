@@ -20,8 +20,22 @@ export class ShoppingListService {
     return this.listItems;
   }
 
+  public existItem(item: string): Array<ItemLista> {
+    let existItem = this.listItems.filter(el => {
+      if (el.name.toUpperCase() === item.toUpperCase()) return true;
+      else return false;
+    });
+    console.log(existItem);
+    
+    return existItem;
+  }
+
   public addItem(item: ItemLista): void {
-    this.listItems.push(item);
+    if (this.existItem(item.name).length === 0) {
+      this.listItems.unshift(item);
+    } else {
+      alert('Item já existe');
+    }
   }
 
   public removeItem(item: ItemLista): void {

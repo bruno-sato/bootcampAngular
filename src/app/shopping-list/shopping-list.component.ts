@@ -25,6 +25,9 @@ export class ShoppingListComponent implements OnInit {
       item.name = this.itemName;
       item.disabled = false;
       this.shoppingListService.addItem(item);
+      this.itemName = '';
+    } else {
+      alert('Não é possível inserir um item vazio!');
     }
   }
 }
