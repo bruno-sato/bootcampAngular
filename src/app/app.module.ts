@@ -1,9 +1,9 @@
+import { environment } from './../environments/environment';
 import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,6 +13,9 @@ import { ShoppingListService } from './shopping-list.service';
 import { AboutComponent } from './about/about.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app-routing.module';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,10 @@ import { APP_ROUTES } from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     AngularFontAwesomeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
   providers: [

@@ -6,6 +6,6 @@
     </div>
   </form>
   <ul class="list-group mt-3">
-    <app-shopping-list-item *ngFor="let item of listItems" [item]="item"></app-shopping-list-item>
+    <app-shopping-list-item *ngFor="let item of listItemFirebase | async" [item]="item"></app-shopping-list-item>
   </ul>
 </div>

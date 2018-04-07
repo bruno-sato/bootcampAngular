@@ -18,19 +18,14 @@ export class ShoppingListItemComponent implements OnInit {
   }
 
   removeItem(): void {
-    this.shoppingListService.removeItem(this.listItem)
-      .subscribe(res => {
-        this.deleted = true;
-      });
+    this.shoppingListService.removeItem(this.listItem);
   }
   checkItem() :void {
     let editedItem: Object = {
       name: this.listItem.name,
       disabled: !this.listItem.disabled
     }
-    this.shoppingListService.edit(this.listItem.id, editedItem).subscribe(res => {
-      this.listItem.disabled = !this.listItem.disabled;
-    });
+    this.shoppingListService.edit(this.listItem.id, editedItem)
   }
  
 }
