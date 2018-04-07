@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ItemLista } from '../item-lista';
 import { ShoppingListService } from '../../shopping-list.service';
 
@@ -10,14 +10,18 @@ import { ShoppingListService } from '../../shopping-list.service';
 export class ShoppingListItemComponent implements OnInit {
 
   @Input('item') public listItem: ItemLista;
+  public deleted: boolean = false;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
   }
 
-  removeItem(item: ItemLista): void {
-    this.shoppingListService.removeItem(item);
+  removeItem(): void {
+    this.shoppingListService.removeItem(this.listItem)
+      .subscribe(res => {
+        this.deleted = true;
+      });
   }
   checkItem(item: ItemLista) :void {
     this.shoppingListService.cross(item);

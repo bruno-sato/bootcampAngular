@@ -1,8 +1,8 @@
-<li class="list-group-item mt-1" [ngClass]="{'disabled': listItem.disabled}">
+<li class="list-group-item mt-1" [ngClass]="{'disabled': listItem.disabled}" *ngIf="!deleted">
   <span class="name">{{ listItem.name }}</span>
   <span class="float-right">
-    <span class="badge badge-danger" (click)="removeItem(listItem)"><fa class="icon" name="trash"></fa></span>
-    <span class="badge badge-success" *ngIf="!listItem.disabled" (click)="checkItem(listItem)"><fa class="icon" name="check"></fa></span>
-    <span class="badge badge-warning" *ngIf="listItem.disabled" (click)="checkItem(listItem)"><fa class="icon" name="check"></fa></span>
+    <span class="badge badge-danger" (click)="removeItem()"><fa class="icon" name="trash"></fa></span>
+    <span class="badge badge-success" *ngIf="!listItem.disabled" (click)="checkItem()"><fa class="icon" name="check"></fa></span>
+    <span class="badge badge-warning" *ngIf="listItem.disabled" (click)="checkItem()"><fa class="icon" name="check"></fa></span>
   </span>
 </li>

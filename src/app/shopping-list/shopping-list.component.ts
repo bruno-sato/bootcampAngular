@@ -16,18 +16,43 @@ export class ShoppingListComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.listItems = this.shoppingListService.findAll();
+    this.shoppingListService.findAll()
+      .subscribe(res => {
+        if(res) {
+          this.listItems = Object.keys(res).map(id => {
+            let item: ItemLista = res[id];
+            item.id = id;
+            return item;
+          }), err => console.log(err);
+        } else this.listItems = [];
+      });
+  }
+
+  public existItem(item: string): Array<ItemLista> {
+    return this.listItems.filter(el => {
+      return el.name.toUpperCase() === item.toUpperCase();
+    });
   }
 
   insertItem(): void {
     if (this.itemName) {
-      let item = new ItemLista();
-      item.name = this.itemName;
-      item.disabled = false;
-      this.shoppingListService.addItem(item);
-      this.itemName = '';
-    } else {
-      alert('Não é possível inserir um item vazio!');
+      if (this.existItem(this.itemName).length === 0){
+        let item = new ItemLista();
+        item.name = this.itemName;
+        item.disabled = false;
+        this.shoppingListService.addItem(item).subscribe(
+          (res) => {
+            item.id = res[name]; 
+            this.listItems.unshift(item);
+          },
+          error => console.log(error)
+        );
+        this.itemName = '';
+      }
+      else {
+        alert('Item já existe');
+      }
     }
+    else alert('Não é possível inserir um item vazio!');
   }
 }

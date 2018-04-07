@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,39 +9,19 @@ export class ShoppingListService {
 
   public listItems: Array<ItemLista>;
   
-  constructor(private httpClient: HttpClient) { 
-    this.listItems = [
-      {name: 'Bread', disabled: false},
-      {name: 'Coffe', disabled: false},
-      {name: 'Butter', disabled: false},
-      {name: 'Milk', disabled: true},
-      {name: 'Cookies', disabled: false}
-    ]
+  constructor(private httpClient: HttpClient) {
   }
 
-  public findAll(): Array<ItemLista> {
-    return this.listItems;
+  public findAll(): Observable<Object> {
+    return this.httpClient.get(`${environment.firebase.databaseURL}/items.json`);
   }
 
-  public existItem(item: string): Array<ItemLista> {
-    return this.listItems.filter(el => {
-      return el.name.toUpperCase() === item.toUpperCase();
-    });
+  public addItem(item: ItemLista): Observable<Object> {
+    return this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item);
   }
 
-  public addItem(item: ItemLista): void {
-    if (this.existItem(item.name).length === 0) 
-      this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item)
-        .subscribe(
-          response => console.log(`It's worked!`),
-          error => console.log(error)
-        );
-    else alert('Item já existe');
-  }
-
-  public removeItem(item: ItemLista): void {
-    let index = this.listItems.indexOf(item);
-    this.listItems.splice(index, 1);
+  public removeItem(item: ItemLista): Observable<Object> {
+    return this.httpClient.delete(`${environment.firebase.databaseURL}/items/${item.id}.json`);
   }
   public cross(item: ItemLista): void {
     let index = this.listItems.indexOf(item);
