@@ -1,20 +1,10 @@
-<div class="container-fluid">
-  <div *ngIf="authService.fireAuth.authState | async as user; else showLogin">
-    <!-- <div class="midia">
-      <img class="img img-thumbnail" [src]="user.photoURL" alt="Profile image" />
-    </div> -->
-    <p>
-      Hi {{ user.displayName }}
-      <br>
-      <button class="btn btn-danger" (click)="logout()">Logout</button>
-    </p>
-    <app-header></app-header>
+<!-- <div *ngIf="authService.fireAuth.authState | async as user; else showLogin"> -->
+  <app-header></app-header>
+  <div class="container-fluid">
     <div class="content">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <ng-template #showLogin>
-    <p>Please, log in.</p>
-    <button class="btn btn-primary" (click)="login()">Login with Google</button>
-  </ng-template>
-</div>
+  <!-- <ng-template #showLogin>
+    <app-login></app-login>
+  </ng-template> -->

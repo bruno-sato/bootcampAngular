@@ -12,7 +12,9 @@ export class AppComponent {
   constructor(private authService: AuthService) {
 
   }
-
+  isLogged() {
+    this.authService.isLogged();
+  }
   login() {
     this.authService.login();
   }
