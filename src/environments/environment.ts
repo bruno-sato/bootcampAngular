@@ -6,6 +6,7 @@
 export const environment = {
     production: false,
     firebase: {
+      apiKey: "",
       authDomain: "shooping-cart-97a5b.firebaseapp.com",
       databaseURL: "https://shooping-cart-97a5b.firebaseio.com",
       projectId: "shooping-cart-97a5b",

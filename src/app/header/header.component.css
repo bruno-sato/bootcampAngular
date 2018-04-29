@@ -1,0 +1,7 @@
+nav.navbar {
+    background-color: #3F51B5;
+}
+nav a,
+.navbar-toggler-icon {
+    color: #fff;
+}

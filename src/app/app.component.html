@@ -1,10 +1,11 @@
-<!-- <div *ngIf="authService.fireAuth.authState | async as user; else showLogin"> -->
+<div *ngIf="authService.fireAuth.authState | async as user; else showLogin">
   <app-header></app-header>
   <div class="container-fluid">
     <div class="content">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <!-- <ng-template #showLogin>
-    <app-login></app-login>
-  </ng-template> -->
+</div>
+<ng-template #showLogin>
+  <app-login></app-login>
+</ng-template>

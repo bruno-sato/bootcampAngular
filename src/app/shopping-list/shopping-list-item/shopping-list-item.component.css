@@ -1,9 +1,33 @@
 .icon {
     font-size: 16px;
+    color: #ffffff;
 }
 span.badge {
     cursor: pointer;
 }
 span.name {
     cursor: default;
+}
+.item {
+    height: 55px;
+    display: flex;
+    padding: 0;
+    padding-right: 15px;
+    border: none;
+}
+.item > div:nth-child(2) {
+    width: 100%;
+}
+.item-status {
+    margin-right: 15px;
+}
+.item-status, .item-status > .badge {
+    height: 55px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item-status > .badge > fa {
+    font-size: 25px;
 }
