@@ -13,7 +13,7 @@ export class AppComponent {
 
   }
   isLogged() {
-    this.authService.isLogged();
+    return this.authService.isLogged();
   }
   login() {
     this.authService.login();

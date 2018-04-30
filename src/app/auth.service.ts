@@ -17,13 +17,16 @@ export class AuthService implements CanActivate {
     this.fireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
+  getUser() {
+    return firebase.auth().currentUser;
+  }
+
   isLogged() {
     let user = firebase.auth().currentUser;
-
     if (user) {
-      console.log(user);
+      return true;
     } else {
-      console.log(user);
+      return false;
     }
   }
 

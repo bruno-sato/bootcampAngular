@@ -5,3 +5,9 @@ nav a,
 .navbar-toggler-icon {
     color: #fff;
 }
+.dropdown-menu {
+    background-color: #1d2d84;
+}
+.dropdown-item:hover {
+    background-color: #3c4b9c;
+}
