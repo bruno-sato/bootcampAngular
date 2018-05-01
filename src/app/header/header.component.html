@@ -9,7 +9,7 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/shopping-list" routerLinkActive="active" href="#">Inicio</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Listas</a>
         </li>
         <li class="nav-item">
@@ -17,15 +17,15 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/about" routerLinkActive="active" href="#" >Sobre</a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
           <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{user ? user.email : Entrar}}
           </span>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Editar</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Sair</a>
+            <!-- <a class="dropdown-item" href="#">Editar</a>
+            <div class="dropdown-divider"></div> -->
+            <a class="dropdown-item" href="#" role="button" (click)="logout($event)">Sair</a>
           </div>
         </li>
       </ul>
