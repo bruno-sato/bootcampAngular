@@ -4,11 +4,11 @@
     <span class="badge badge-danger" *ngIf="listItem.disabled" (click)="checkItem()"><fa class="icon" name="times"></fa></span>
   </div>
   <div>
-    <span class="item-name">{{ listItem.name }}</span>
-    <span class="item-qtd float-right">2</span>
+    <span class="item-name">Nome: {{ listItem.name }}</span>
+    <span class="item-qtd float-right">Valor: {{ listItem.value * listItem.quantity | currency: 'BRL' }}</span>
     <div>
-      <span class="item-category">Legumes</span>
-      <span class="badge badge-info float-right"><fa class="icon" name="pencil"></fa></span>
+      <span class="item-category">Quantidade: {{ listItem.quantity }}</span>
+      <!-- <span class="badge badge-info float-right"><fa class="icon" name="pencil"></fa></span> -->
     </div>
   </div>
 </li>

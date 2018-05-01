@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from '../shopping-list.service';
 import { ItemLista } from './item-lista';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,25 +13,44 @@ export class ShoppingListComponent implements OnInit {
 
   public listItemFirebase: Observable<ItemLista[]>;
   public itemName: string;
+  public itemQuantity: number;
+  public itemValue: number;
+  public filter: string;
+  public totalValue: number = 0;
 
   constructor(private shoppingListService: ShoppingListService) {
   }
   
   ngOnInit() {
-    this.listItemFirebase = this.shoppingListService.listItemsFirebase;
+    this.listItemFirebase = this.shoppingListService.listItemsFirebase.map(
+      change => {
+        this.totalValue = 0;
+        return change.map(c => {
+          if (c['disabled'].toString() === 'true') {
+            this.totalValue = this.totalValue + (parseInt(c['value'].toString()) * parseInt(c['quantity'.toString()]));
+          }
+          return c
+        })
+      }
+    )
   }
 
-  // public existItem(item: string): Array<ItemLista> {
-  //   return this.listItems.filter(el => {
-  //     return el.name.toUpperCase() === item.toUpperCase();
-  //   });
-  // }
+  cancelarItem() {
+    this.itemName = '';
+    this.itemQuantity = undefined;
+    this.itemValue = undefined;
+  }
+
+  filterItem() {
+    
+  }
 
   insertItem(): void {
     if (this.itemName) {
-      // if (this.existItem(this.itemName).length === 0){
         let item = new ItemLista();
         item.name = this.itemName;
+        item.quantity = this.itemQuantity;
+        item.value = this.itemValue;
         item.disabled = false;
         this.shoppingListService.addItem(item);
         this.itemName = '';
