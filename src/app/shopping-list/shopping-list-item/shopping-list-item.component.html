@@ -8,7 +8,7 @@
     <span class="item-qtd float-right">Valor: {{ listItem.value * listItem.quantity | currency: 'BRL' }}</span>
     <div>
       <span class="item-category">Quantidade: {{ listItem.quantity }}</span>
-      <!-- <span class="badge badge-info float-right"><fa class="icon" name="pencil"></fa></span> -->
+      <span class="badge badge-danger float-right" (click)="removeItem()"><fa class="icon" name="trash"></fa></span>
     </div>
   </div>
 </li>

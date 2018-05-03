@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShoppingListService } from '../shopping-list.service';
 import { ItemLista } from './item-lista';
-import * as $ from 'jquery';
+declare var $ :any;
 
 @Component({
   selector: 'app-shopping-list',
@@ -51,9 +51,12 @@ export class ShoppingListComponent implements OnInit {
         item.name = this.itemName;
         item.quantity = this.itemQuantity;
         item.value = this.itemValue;
-        item.disabled = false;
+        item.disabled = true;
         this.shoppingListService.addItem(item);
         this.itemName = '';
+        this.itemValue = undefined;
+        this.itemQuantity = undefined;
+        $('#add-item').modal('hide');
     }
     else alert('Não é possível inserir um item vazio!');
   }

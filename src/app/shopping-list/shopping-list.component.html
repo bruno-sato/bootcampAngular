@@ -1,14 +1,14 @@
 <div class="content">
   <form>
     <div class="input-group mt-3">
-      <input type="text" name="filterItem" class="form-control" placeholder="Buscar item" (keyup)="filterItem()" [(ngModel)]="filter" >
-      <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#add-item"><fa class="icon" name="plus"></fa></button>
+      <!-- <input type="text" name="filterItem" class="form-control" placeholder="Buscar item" (keyup)="filterItem()" [(ngModel)]="filter" > -->
+      <button type="submit" class="btn btn-success add-button shadow" data-toggle="modal" data-target="#add-item"><fa class="icon" name="plus"></fa></button>
     </div>
     <div>
       <span>Valor total: {{ totalValue | currency: 'BRL' }}</span>
     </div>  
   </form>
-  <ul class="list-group mt-3">
+  <ul class="list-group mt-3 mb-3">
     <app-shopping-list-item *ngFor="let item of listItemFirebase | async" [item]="item"></app-shopping-list-item>
   </ul>
   <div class="modal fade" id="add-item" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarItem" aria-hidden="true">
