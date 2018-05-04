@@ -17,6 +17,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginComponent } from './login/login.component';
+import { LanguagesComponent } from './languages/languages.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { LoginComponent } from './login/login.component';
     ShoppingListComponent,
     ShoppingListItemComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    LanguagesComponent,
+    PageNotFoundComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

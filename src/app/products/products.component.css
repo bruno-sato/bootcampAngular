@@ -1,0 +1,11 @@
+button.add-button {
+    width: 51px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 25px;
+    z-index: 2;
+}
+button.add-button fa {
+    font-size: 25px;
+}

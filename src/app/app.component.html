@@ -1,5 +1,5 @@
+<app-header></app-header>
 <div *ngIf="authService.fireAuth.authState | async as user; else showLogin">
-  <app-header></app-header>
   <div class="container-fluid">
     <div class="content">
       <router-outlet></router-outlet>

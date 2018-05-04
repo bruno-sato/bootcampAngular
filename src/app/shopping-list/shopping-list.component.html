@@ -1,37 +1,11 @@
 <div class="content">
   <form>
-    <div class="input-group mt-3">
-      <!-- <input type="text" name="filterItem" class="form-control" placeholder="Buscar item" (keyup)="filterItem()" [(ngModel)]="filter" > -->
-      <button type="submit" class="btn btn-success add-button shadow" data-toggle="modal" data-target="#add-item"><fa class="icon" name="plus"></fa></button>
-    </div>
+    <!-- <input type="text" name="filterItem" class="form-control" placeholder="Buscar item" (keyup)="filterItem()" [(ngModel)]="filter" > -->
     <div>
-      <span>Valor total: {{ totalValue | currency: 'BRL' }}</span>
+      <span class="float-right">Valor total: {{ totalValue | currency: 'BRL' }}</span>
     </div>  
   </form>
   <ul class="list-group mt-3 mb-3">
     <app-shopping-list-item *ngFor="let item of listItemFirebase | async" [item]="item"></app-shopping-list-item>
   </ul>
-  <div class="modal fade" id="add-item" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarItem" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Adicionar item</h5>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="item-name">Item</label>
-            <input type="text" class="form-control" [(ngModel)]="itemName" name="item-name">
-            <label for="item-quantity">Quantidade</label>
-            <input type="text" class="form-control" [(ngModel)]="itemQuantity" name="item-quantity">
-            <label for="item-value">Valor</label>
-            <input type="text" class="form-control" [(ngModel)]="itemValue" name="item-value">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelarItem()">Cancelar</button>
-          <button type="button" class="btn btn-primary" (click)="insertItem()">Adicionar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
