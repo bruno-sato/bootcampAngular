@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+declare var $ :any;
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,19 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getUser();
+    $('a.nav-link:not(.dropdown-toggle)').on('click', () => {
+      if ($(".navbar-collapse").is(":visible") && $(".navbar-collapse").is(":visible") ) {
+        $('.navbar-collapse').collapse('toggle');
+      }
+    })
   }
 
   isLogged() {
-    return this.authService.isLogged();
+    let isLogged: boolean = this.authService.isLogged();
+    if (isLogged) {
+      this.user = this.authService.getUser();
+    }
+    return isLogged;
   }
 
   logout(event: Event) {

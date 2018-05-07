@@ -1,3 +1,13 @@
-<p>
-  languages works!
-</p>
+<div>
+  <h1>Idiomas</h1>
+  <div>
+    <form class="form-group">
+      <label for="language">Selecione um idioma:</label>
+      <select name="language" id="language" [(ngModel)]="language" class="form-control">
+        <option value="1">Português</option>
+        <option value="2">Inglês</option>
+      </select>
+      <a class="btn btn-primary mt-3" href="#" role="button" (click)="saveLanguage($event)">Salvar</a>
+    </form>
+  </div>
+</div>

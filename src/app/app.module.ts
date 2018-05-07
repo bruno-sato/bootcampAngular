@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductsComponent } from './products/products.component';
+import { ConfigService } from './utils/config.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ProductsComponent } from './products/products.component';
   ],
   providers: [
     ShoppingListService,
-    AuthService
+    AuthService,
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })
